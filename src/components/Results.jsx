@@ -1,13 +1,8 @@
 
 import { calculateInvestmentResults, formatter } from "../util/investment";
 
-export default function Result({ initialInvestment, annualInvestment, expectedReturn, duration }) {
-  const results = calculateInvestmentResults({
-    initialInvestment: initialInvestment,
-    annualInvestment: annualInvestment,
-    expectedReturn: expectedReturn,
-    duration: duration
-  });
+export default function Result({ userInput }) {
+  const results = calculateInvestmentResults(userInput);
 
   {/* Don't know, don't care. Max says this is the calculation to use. */}
   const firstYearInitialInvestment = results[0] ? (results[0].valueEndOfYear - results[0].interest - results[0].annualInvestment) : 0;

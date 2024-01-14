@@ -5,44 +5,29 @@ import UserInput from "./components/UserInput";
 import Result from "./components/Results";
 
 function App() {
-  const [ initialInvestment, setInitialInvestment ] = useState(0);
-  const [ annualInvestment, setAnnualInvestment ] = useState(0);
-  const [ expectedReturn, setExpectedReturn ] = useState(0);
-  const [ duration, setDuration ] = useState(0);
+  const [ userInput, setUserInput ] = useState({
+    initialInvestment: undefined,
+    annualInvestment: undefined,
+    expectedReturn: undefined,
+    duration: undefined
+  });
 
-  function handleInitialInvestmentChange(event) {
-    setInitialInvestment(parseInt(event.target.value));
-  }
-
-  function handleAnnualInvestmentChange(event) {
-    setAnnualInvestment(parseInt(event.target.value));
-  }
-
-  function handleExpectedReturnChange(event) {
-    setExpectedReturn(parseInt(event.target.value));
-  }
-
-  function handleDurationChange(event) {
-    setDuration(parseInt(event.target.value));
+  function handleUserInputChange(event, inputIdentifier) {
+    setUserInput(prevUserInput => {
+      return {
+        ...prevUserInput,                               // copy old userInput
+        [inputIdentifier]: parseInt(event.target.value) // then overwrite the relevant key's value
+      }
+    });
   }
 
   return (
     <>
       <Header />
 
-      <UserInput
-        onInitialInvestmentChange={handleInitialInvestmentChange}
-        onAnnualInvestmentChange={handleAnnualInvestmentChange}
-        onExpectedReturnChange={handleExpectedReturnChange}
-        onDurationChange={handleDurationChange}
-        />
+      <UserInput handleUserInputChange={handleUserInputChange} />
 
-      <Result
-        initialInvestment={initialInvestment}
-        annualInvestment={annualInvestment}
-        expectedReturn={expectedReturn}
-        duration={duration}
-        />
+      <Result userInput={userInput} />
     </>
   )
 }
