@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
+import Result from "./components/Results";
 
 function App() {
   const [ initialInvestment, setInitialInvestment ] = useState(0);
@@ -10,19 +11,19 @@ function App() {
   const [ duration, setDuration ] = useState(0);
 
   function handleInitialInvestmentChange(event) {
-    setInitialInvestment(event.target.value);
+    setInitialInvestment(parseInt(event.target.value));
   }
 
   function handleAnnualInvestmentChange(event) {
-    setAnnualInvestment(event.target.value);
+    setAnnualInvestment(parseInt(event.target.value));
   }
 
   function handleExpectedReturnChange(event) {
-    setExpectedReturn(event.target.value);
+    setExpectedReturn(parseInt(event.target.value));
   }
 
   function handleDurationChange(event) {
-    setDuration(event.target.value);
+    setDuration(parseInt(event.target.value));
   }
 
   return (
@@ -34,6 +35,13 @@ function App() {
         onAnnualInvestmentChange={handleAnnualInvestmentChange}
         onExpectedReturnChange={handleExpectedReturnChange}
         onDurationChange={handleDurationChange}
+        />
+
+      <Result
+        initialInvestment={initialInvestment}
+        annualInvestment={annualInvestment}
+        expectedReturn={expectedReturn}
+        duration={duration}
         />
     </>
   )

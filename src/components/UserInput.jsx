@@ -4,12 +4,12 @@ export default function UserInput({ onInitialInvestmentChange, onAnnualInvestmen
       <div className="input-group">
         <div>
           <label>Initial investment</label>
-          <input type="number" onChange={onInitialInvestmentChange}></input>
+          <input type="number" onChange={onInitialInvestmentChange} required></input>
         </div>
 
         <div>
           <label>Annual investment</label>
-          <input type="number" onChange={onAnnualInvestmentChange}></input>
+          <input type="number" onChange={onAnnualInvestmentChange} required></input>
         </div>
       </div>
 
@@ -18,12 +18,12 @@ export default function UserInput({ onInitialInvestmentChange, onAnnualInvestmen
       <div className="input-group">
         <div>
           <label>Expected return</label>
-          <input type="number" onChange={onExpectedReturnChange}></input>
+          <input type="number" onChange={onExpectedReturnChange} required></input>
         </div>
 
         <div>
           <label>Duration</label>
-          <input type="number" onChange={onDurationChange}></input>
+          <input type="number" onChange={onDurationChange} required></input>
         </div>
       </div>
     </div>
